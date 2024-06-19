@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Симулятор котика</title>
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Котик: {{ cat.name }}</h1>
+        <img style="width: 60%" src="{% static 'images/'|add:cat.get_avatar %}" alt="Аватарка коттика">
+        <p>Возраст: {{ cat.age }}</p>
+        <p>Сытость: {{ cat.fullness }}</p>
+        <p>Счастье: {{ cat.happiness }}</p>
+            {% if cat.sleeping %}
+                <p>Котик спит!</p>
+            {% else %}
+                <p>Котик не спит!</p>
+            {% endif %}
+        <form method="get">
+            <label for="action">Выберите действие:</label>
+            <select id="action" name="action">
+                <option value="feed">Покормить</option>
+                <option value="play">Поиграть</option>
+                <option value="sleep">Спать</option>
+            </select>
+            <button type="submit">Выполнить действие</button>
+        </form>
+    </div>
+</body>
+</html>
